@@ -1,98 +1,106 @@
-.time{
+.time {
     text-align: center;
-    font-family:'digital7';
-    color: white;
+    font-family: 'digital7';
+    color: black;
 }
-#hrs{
+
+#hrs {
     padding-left: 80px;
 }
-#time{
+
+#time {
     padding-right: 80px;
 }
-.row1{
+
+.row1 {
     border-bottom-width: 0px;
     border-radius: 1cm;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
-    background: url(background.jpg) no-repeat center center fixed;
+    background: white;
 }
-.row2{
+
+.row2 {
     border-top-width: 0px;
     border-radius: 1cm;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
-    background: url(background.jpg) no-repeat center center fixed;
+    background: white;
 }
-h1{
+
+h1 {
     text-align: center;
-    color: white;
+    color: black;
 }
+
 @font-face {
-	font-family: digital7;
-	src: url('digital7.ttf');
+    font-family: digital7;
+    src: url('digital7.ttf');
 }
-#date{
+
+#date {
     text-align: center;
     font-family: "Allerta Stencil", Sans-serif;
-    color: white;
+    color: black;
 }
-body { 
-    background: url(background.jpg) no-repeat center center fixed; 
-    background-size: cover;
-  }
 
-@media screen and (min-width : 992px){
-    .time{
+body {
+    background:  #d1ecff;
+    background-size: cover;
+}
+
+@media screen and (min-width: 992px) {
+    .time {
         font-size: 120px;
         height: 180px;
     }
-    #date{
+    #date {
         font-size: 50px;
         height: 150px;
     }
-    h1{
+    h1 {
         font-size: 70px;
     }
 }
 
-@media screen and (max-width : 991px) and (min-width :768px){
-    .time{
+@media screen and (max-width: 991px) and (min-width: 768px) {
+    .time {
         font-size: 100px;
         height: 150px;
     }
-    #date{
+    #date {
         font-size: 40px;
         height: 120px;
     }
-    h1{
+    h1 {
         font-size: 56px;
     }
 }
 
-@media screen and (max-width : 767px) and (min-width :576px){
-    .time{
+@media screen and (max-width: 767px) and (min-width: 576px) {
+    .time {
         font-size: 80px;
         height: 120px;
     }
-    #date{
+    #date {
         font-size: 30px;
         height: 90px;
     }
-    h1{
+    h1 {
         font-size: 42px;
     }
 }
 
-@media screen and (max-width : 575px){
-    .time{
+@media screen and (max-width: 575px) {
+    .time {
         font-size: 70px;
         height: 90px;
     }
-    #date{
+    #date {
         font-size: 25px;
         height: 80px;
     }
-    h1{
+    h1 {
         font-size: 35px;
     }
 }

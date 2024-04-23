@@ -2,13 +2,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Firebase configuration
     var firebaseConfig = {
         apiKey: "AIzaSyDzY5iuxQuSOBH33ek5RsF0AEIS_vl2CJ4",
-        authDomain: "forget-me-not-74a74.firebaseapp.com",
-        databaseURL: "https://forget-me-not-74a74-default-rtdb.firebaseio.com/",
-        projectId: "forget-me-not-74a74",
-        storageBucket: "forget-me-not-74a74.appspot.com",
-        messagingSenderId: "214952191183",
-        appId: "1:214952191183:web:84d5d9a3b75bea6f1043ba",
-        measurementId: "G-LNF4FK3XM1"
+          authDomain: "forget-me-not-74a74.firebaseapp.com",
+          databaseURL: "https://forget-me-not-74a74-default-rtdb.firebaseio.com/",
+          projectId: "forget-me-not-74a74",
+          storageBucket: "forget-me-not-74a74.appspot.com",
+          messagingSenderId: "214952191183",
+          appId: "1:214952191183:web:84d5d9a3b75bea6f1043ba",
+          measurementId: "G-LNF4FK3XM1"
     };
 
     // Initialize Firebase
@@ -16,9 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Get a reference to the storage service, which is used to create references in your storage bucket
     var storage = firebase.storage();
-
-    // Get a reference to the Firebase Realtime Database
-    var database = firebase.database();
 
     // Function to fetch images from Firebase Storage
     function fetchImages() {
@@ -60,29 +57,6 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Error listing images:', error);
         });
     }
-
-    // Function to play sound from Firebase Storage
-    function playSound(soundURL) {
-        var audio = new Audio(soundURL);
-        audio.play();
-    }
-
-    // Listen for changes in the Firebase Realtime Database
-    database.ref('scheduled_sounds').on('value', function(snapshot) {
-        snapshot.forEach(function(childSnapshot) {
-            var soundData = childSnapshot.val();
-            var currentTime = new Date().toISOString();
-
-            // Compare current time with the time stored in the database
-            if (soundData.time === currentTime) {
-                // Play the associated sound
-                playSound(soundData.soundURL);
-
-                // Remove the entry from the database
-                childSnapshot.ref.remove();
-            }
-        });
-    });
 
     // Call fetchImages() function to load images when the page loads
     fetchImages();

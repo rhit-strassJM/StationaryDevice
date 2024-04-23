@@ -6,7 +6,7 @@
     <title>Weather App</title>
     <style>
         body {
-            background-color: #87CEEB; /* Light blue */
+            background-color:  #d1ecff; /* Light blue */
             font-family: Arial, sans-serif;
         }
         .container {
@@ -114,7 +114,7 @@
             if (conditionLowerCase.includes("sunny")) {
                 imageSource = 'Images/Sunny.png';
             } else if (conditionLowerCase.includes("cloud") || conditionLowerCase.includes("overcast")) {
-                imageSource = 'Images/Cloudy.png';
+                imageSource = 'Images/Cloudy.jpg';
             } else if (conditionLowerCase.includes("rain") || conditionLowerCase.includes("shower")) {
                 imageSource = 'Images/Rainy.jpeg';
             } 
@@ -127,7 +127,7 @@
 
             weatherImageElement.innerHTML = `
                 <img src="${imageSource}" alt="Weather Image">
-                <h4>${weatherData.condition}</h4>
+                <h3>The weather is ${conditionLowerCase}!</h3>
             `;
         }
 
