@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            background-color: #87CEEB; /* Light blue */
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh; 
+        }
+        .weather-container {
+            display: flex;
+            flex-direction: column; /* Changed from row to column */
+            align-items: center;
+            justify-content: space-around;
+            padding: 75px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .weather-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .weather-info h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .weather-info p {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+        .weather-image {
+            text-align: center; /* Center align the contents */
+        }
+        .weather-image img {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 10px;
+        }
+        .weather-image p {
+            margin-top: 10px; /* Add some space between the image and the text */
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html">
+        <img src="\Images\Home.svg" style="width:50px;" class="w3-button">
+      </a>
+    <div class="container">
+        <div class="weather-container" id="weatherContainer">
+            <div class="weather-image" id="weatherImage"></div>
+            <div class="weather-info" id="weatherInfo"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function fetchData() {
+                const apiKey = "8f47fc536ae04a97901192639241701";
+                const city = "Terre Haute";
+                const apiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`;
+
+                fetch(apiUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        if ("error" in data) {
+                            console.error(`Error: ${data.error.message}`);
+                            return {
+                                temperature: "N/A",
+                                humidity: "N/A",
+                                condition: "N/A",
+                                wind_speed: "N/A"
+                            };
+                        }
+
+                        const current = data.current;
+                        const condition = current.condition || {};
+                        return {
+                            temperature: current.temp_c || "N/A",
+                            humidity: current.humidity || "N/A",
+                            condition: condition.text || "N/A",
+                            wind_speed: current.wind_kph || "N/A"
+                        };
+                    })
+                    .then(weatherData => {
+                        renderWeather(weatherData);
+                    })
+                    .catch(error => console.error('Error fetching data:', error));
+            }
+
+            function renderWeather(weatherData) {
+            const weatherInfoElement = document.getElementById("weatherInfo");
+            weatherInfoElement.innerHTML = `
+                <h2>Weather Information</h2>
+                <p>Temperature: ${weatherData.temperature}°C</p>
+                <p>Humidity: ${weatherData.humidity}%</p>
+                <p>Condition: ${weatherData.condition}</p>
+                <p>Wind Speed: ${weatherData.wind_speed} km/h</p>
+            `;
+
+            const weatherImageElement = document.getElementById("weatherImage");
+            let imageSource = '';
+            const conditionLowerCase = weatherData.condition.toLowerCase();
+
+            if (conditionLowerCase.includes("sunny")) {
+                imageSource = 'Images/Sunny.png';
+            } else if (conditionLowerCase.includes("cloud") || conditionLowerCase.includes("overcast")) {
+                imageSource = 'Images/Cloudy.png';
+            } else if (conditionLowerCase.includes("rain") || conditionLowerCase.includes("shower")) {
+                imageSource = 'Images/Rainy.jpeg';
+            } 
+            else if (conditionLowerCase.includes("clear")) {
+                imageSource = 'Images/NoCloud.jpg';
+            }
+            else {
+                imageSource = 'Images/Storm.png'; // Default image for other conditions
+            }
+
+            weatherImageElement.innerHTML = `
+                <img src="${imageSource}" alt="Weather Image">
+                <h4>${weatherData.condition}</h4>
+            `;
+        }
+
+            fetchData();
+        });
+    </script>
+</body>
+</html>

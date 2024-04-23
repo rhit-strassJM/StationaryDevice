@@ -1,0 +1,20 @@
+{
+  "rules": {
+    "alarms": {
+      ".read": true,
+      ".write": "auth == null"
+    },
+    "images": {
+      "$imageId": {
+        ".read": true,
+        ".write": true
+      }
+    },
+    "audio": {
+      "$allPaths": {
+        ".read": true,
+        ".write": true
+      }
+    }
+  }
+}
