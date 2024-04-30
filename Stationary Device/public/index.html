@@ -14,7 +14,15 @@
         .button-container {
             display: flex;
             justify-content: center;
-            margin-top: 20px;
+            position: fixed;
+            bottom: 20px;
+            width: 100%;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+        .button-container button {
+            margin: 0 5px; /* Adjust the margin as needed */
+            font-size: 1.5rem; /* Increase the font size for bigger buttons */
         }
     </style>
 </head>
@@ -40,7 +48,8 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-
+    
+    <button id="element" style="background-color: #d1ecff; border: none;"></button>
     <!-- Button container -->
     <div class="button-container">
         <a href="clock.html">
@@ -55,6 +64,7 @@
     <!-- Include Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-database.js"></script> 
     <!-- Include your app.js -->
     <script src="app.js"></script>
 </body>
