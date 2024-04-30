@@ -67,8 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
         
     console.log("Initializing...");
-    document.getElementById('element').click();
-    console.log("Passed click");
+    
     setInterval(checkAndPlayAlarms, 1000);
     
 
