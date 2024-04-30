@@ -86,8 +86,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Create image element and set its source to the URL
                     var img = document.createElement('img');
                     img.src = url;
-                    img.style.width = '300px'; // Set width to desired size
-                    img.style.height = '200px'; // Set height to desired size
+                    img.style.width = '450px'; // Set width to desired size
+                    img.style.height = '350px'; // Set height to desired size
 
                     // Create carousel item and append the image to it
                     var carouselItem = document.createElement('div');
