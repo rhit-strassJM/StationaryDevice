@@ -101,10 +101,10 @@
             const weatherInfoElement = document.getElementById("weatherInfo");
             weatherInfoElement.innerHTML = `
                 <h2>Weather Information</h2>
-                <p>Temperature: ${weatherData.temperature}°C</p>
+                <p>Temperature: ${(Math.floor(weatherData.temperature * (9/5)) +32)}°F</p>
                 <p>Humidity: ${weatherData.humidity}%</p>
                 <p>Condition: ${weatherData.condition}</p>
-                <p>Wind Speed: ${weatherData.wind_speed} km/h</p>
+                <p>Wind Speed: ${Math.floor(weatherData.wind_speed/ 1.609344)} mph</p>
             `;
 
             const weatherImageElement = document.getElementById("weatherImage");

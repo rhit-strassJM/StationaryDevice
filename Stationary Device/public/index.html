@@ -19,8 +19,8 @@
             justify-content: center;
         }
         .carousel-item {
-            margin-top: 10px;
-            margin-bottom: 20px;
+            margin-top: 75px;
+            margin-bottom: 10px;
             position: relative;
             width: 450px; /* Adjust carousel width as needed */
             height: 350px; /* Adjust carousel height as needed */
@@ -58,9 +58,9 @@
     <button id="element" style="background-color: #d1ecff; border: none;"></button>
     <!-- Button container -->
     <div class="button-container">
-        <button type="button" style="background-color: #be4d25;" class="btn btn-success full-width-button"><a href="clock.html"></a>Clock</a></button>
-        <button type="button" style="background-color: #2587be" class="btn btn-success full-width-button"><a href="weather.html"></a>Weather</a></button>
-        <button type="button" style="background-color: #49be25;" class="btn btn-success">Location</button>
+        <button type="button" id="clockButton" style="background-color: #be4d25;" class="btn btn-success full-width-button">Clock</button>
+        <button type="button" id="weatherButton" style="background-color: #2587be" class="btn btn-success full-width-button">Weather</button>
+        <button type="button" id="locationButton" style="background-color: #49be25;" class="btn btn-success full-width-button">Location</button>
     </div>
 
     <!-- Include Firebase SDK -->
@@ -69,5 +69,19 @@
     <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-database.js"></script> 
     <!-- Include your app.js -->
     <script src="app.js"></script>
+    <script>
+        // Add event listeners to buttons
+        document.getElementById('clockButton').addEventListener('click', function() {
+            window.location.href = 'clock.html';
+        });
+        
+        document.getElementById('weatherButton').addEventListener('click', function() {
+            window.location.href = 'weather.html';
+        });
+        
+        document.getElementById('locationButton').addEventListener('click', function() {
+            window.location.href = 'location.html'; // Change this to the appropriate location URL
+        });
+    </script>
 </body>
 </html>
