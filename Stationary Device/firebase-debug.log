@@ -1,0 +1,28 @@
+[debug] [2024-05-08T13:51:44.741Z] ----------------------------------------------------------------------
+[debug] [2024-05-08T13:51:44.747Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\strassjm\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve --project forget-me-not-74a74
+[debug] [2024-05-08T13:51:44.749Z] CLI Version:   13.7.3
+[debug] [2024-05-08T13:51:44.749Z] Platform:      win32
+[debug] [2024-05-08T13:51:44.749Z] Node Version:  v20.12.0
+[debug] [2024-05-08T13:51:44.750Z] Time:          Wed May 08 2024 09:51:44 GMT-0400 (Eastern Daylight Time)
+[debug] [2024-05-08T13:51:44.750Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-05-08T13:51:44.758Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2024-05-08T13:51:44.958Z] Object ".hosting" in "firebase.json" has unknown property: {"additionalProperty":"database"}
+[debug] [2024-05-08T13:51:44.958Z] Field ".hosting" in "firebase.json" is possibly invalid: should be array
+[debug] [2024-05-08T13:51:44.958Z] Field ".hosting" in "firebase.json" is possibly invalid: should match some schema in anyOf
+[debug] [2024-05-08T13:51:44.964Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-05-08T13:51:44.964Z] > authorizing via signed-in user (strassjm@gmail.com)
+[debug] [2024-05-08T13:51:44.964Z] [iam] checking project forget-me-not-74a74 for permissions ["firebase.projects.get"]
+[debug] [2024-05-08T13:51:44.965Z] > refreshing access token with scopes: []
+[debug] [2024-05-08T13:51:44.966Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2024-05-08T13:51:44.966Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-05-08T13:51:45.061Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2024-05-08T13:51:45.061Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2024-05-08T13:51:45.116Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2024-05-08T13:51:45.117Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-05-08T13:51:45.132Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/forget-me-not-74a74:testIamPermissions [none]
+[debug] [2024-05-08T13:51:45.132Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/forget-me-not-74a74:testIamPermissions x-goog-quota-user=projects/forget-me-not-74a74
+[debug] [2024-05-08T13:51:45.132Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/forget-me-not-74a74:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2024-05-08T13:51:45.323Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/forget-me-not-74a74:testIamPermissions 200
+[debug] [2024-05-08T13:51:45.323Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/forget-me-not-74a74:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2024-05-08T13:51:45.325Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/forget-me-not-74a74 [none]

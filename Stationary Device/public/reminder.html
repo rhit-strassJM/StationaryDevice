@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Display Firebase Messages</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Firebase JavaScript SDK -->
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-database.js"></script>
+  <style>
+    /* CSS for styling messages */
+    .message-container {
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    /* Custom CSS for increasing font size */
+    .card-text {
+      font-size: 25px; /* Adjust the font size as needed */
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body style="background: #d1ecff;">
+    <a href="index.html">
+        <img src="\Images\Home.svg" style="width:90px;" class="w3-button">
+      </a>
+  <div class="container">
+    <h1 class="mt-4">Upcoming Events</h1>
+    <div id="messages" class="mt-4"></div>
+  </div>
+
+  <script>
+    // Your Firebase project configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyDzY5iuxQuSOBH33ek5RsF0AEIS_vl2CJ4",
+        authDomain: "forget-me-not-74a74.firebaseapp.com",
+        databaseURL: "https://forget-me-not-74a74-default-rtdb.firebaseio.com/",
+        projectId: "forget-me-not-74a74",
+        storageBucket: "forget-me-not-74a74.appspot.com",
+        messagingSenderId: "214952191183",
+        appId: "1:214952191183:web:84d5d9a3b75bea6f1043ba",
+        measurementId: "G-LNF4FK3XM1"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Get a reference to the database service
+    const database = firebase.database();
+
+    // Function to load messages from Firebase
+    function loadMessages() {
+      const messagesRef = database.ref('alarms');
+
+      // Listen for changes in alarms
+      messagesRef.on('value', function(snapshot) {
+        // Clear previous messages
+        document.getElementById('messages').innerHTML = '';
+
+        // Loop through each message
+        snapshot.forEach(function(childSnapshot) {
+          const message = childSnapshot.val().message;
+          const dateTime = childSnapshot.val().alarmDateTime;
+          
+          // Create HTML element for each message
+          const messageElement = document.createElement('div');
+          messageElement.classList.add('card', 'message-container');
+          
+          // Create elements for message content and date/time
+          const cardBody = document.createElement('div');
+          cardBody.classList.add('card-body');
+          const messageContent = document.createElement('p');
+          messageContent.classList.add('card-text');
+          messageContent.innerText = message;
+          const messageDateTime = document.createElement('p');
+          messageDateTime.classList.add('card-text', 'text-muted', 'small');
+          messageDateTime.innerText = 'Date and Time: ' + new Date(dateTime).toLocaleString(); // Convert timestamp to readable format
+
+          // Append message content and date/time to card body
+          cardBody.appendChild(messageContent);
+          cardBody.appendChild(messageDateTime);
+          
+          // Append card body to card
+          messageElement.appendChild(cardBody);
+          
+          // Append card to messages div
+          document.getElementById('messages').appendChild(messageElement);
+        });
+      });
+    }
+
+    // Load messages when the page loads
+    window.onload = loadMessages;
+  </script>
+</body>
+</html>
