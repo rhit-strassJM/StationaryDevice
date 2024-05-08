@@ -45,10 +45,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 alarmDateTime.setSeconds(0);
                 alarmDateTime.setMilliseconds(0);
     
-                console.log(alarmDateTime.getTime() + " vs. " + currentDateTime.getTime());
-                var tolerance = 1000; // 1 second tolerance
+                console.log(alarmDateTime.toISOString() + " vs. " + currentDateTime.toISOString());
+                console.log((alarmDateTime.toISOString() == currentDateTime.toISOString()))
+              
 
-                if (Math.abs(alarmDateTime.getTime() - currentDateTime.getTime()) <= tolerance) {
+                if (alarmDateTime.toISOString() == currentDateTime.toISOString()) {
                     console.log("time matched!")
                     playSound(alarmData.audioURL);
                     // Remove the entry from the database
