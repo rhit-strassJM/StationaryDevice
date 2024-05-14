@@ -1,3 +1,52 @@
+function playSound(soundURL) {
+  var audio = new Audio(soundURL);
+  audio.play().then(function() {
+      console.log('Audio playback started successfully');
+  }).catch(function(error) {
+      console.error('Error playing audio:', error);
+  });
+}
+
+function checkAndPlayAlarms() {
+  firebase.database().ref('alarms').once('value', function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+          var alarmData = childSnapshot.val();
+          var currentDateTime = new Date();
+
+          currentDateTime.setSeconds(0);
+          currentDateTime.setMilliseconds(0);
+
+          var alarmDateTime = new Date(alarmData.alarmDateTime);
+
+          alarmDateTime.setSeconds(0);
+          alarmDateTime.setMilliseconds(0);
+
+          console.log(alarmDateTime.toISOString() + " vs. " + currentDateTime.toISOString());
+          console.log((alarmDateTime.toISOString() == currentDateTime.toISOString()))
+        
+
+          if (alarmDateTime.toISOString() == currentDateTime.toISOString()) {
+              console.log("time matched!")
+              playSound(alarmData.audioURL);
+              // Remove the entry from the database
+              childSnapshot.ref.remove()
+                  .then(function() {
+                      console.log("Alarm entry removed from the database");
+                  })
+                  .catch(function(error) {
+                      console.error("Error removing alarm entry:", error);
+                  });
+          }
+      });
+  }).catch(function(error) {
+      console.error('Error retrieving alarms:', error);
+  });
+}
+  
+console.log("Initializing...");
+
+setInterval(checkAndPlayAlarms, 1000);
+
 /* Fetching Data from OpenWeatherMap API */
 let weather = {
     apiKey: "aba6ff9d6de967d5eac6fd79114693cc",
@@ -105,4 +154,6 @@ let weather = {
   
   // Call getLocation function to fetch weather based on user's current location
   geocode.getLocation();
+
+
   
