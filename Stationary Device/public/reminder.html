@@ -55,41 +55,45 @@
     function loadMessages() {
       const messagesRef = database.ref('alarms');
 
-      // Listen for changes in alarms
-      messagesRef.on('value', function(snapshot) {
-        // Clear previous messages
-        document.getElementById('messages').innerHTML = '';
-
-        // Loop through each message
-        snapshot.forEach(function(childSnapshot) {
-          const message = childSnapshot.val().message;
-          const dateTime = childSnapshot.val().alarmDateTime;
-          
-          // Create HTML element for each message
-          const messageElement = document.createElement('div');
-          messageElement.classList.add('card', 'message-container');
-          
-          // Create elements for message content and date/time
-          const cardBody = document.createElement('div');
-          cardBody.classList.add('card-body');
-          const messageContent = document.createElement('p');
-          messageContent.classList.add('card-text');
-          messageContent.innerText = message;
-          const messageDateTime = document.createElement('p');
-          messageDateTime.classList.add('card-text', 'text-muted', 'small');
-          messageDateTime.innerText = 'Date and Time: ' + new Date(dateTime).toLocaleString(); // Convert timestamp to readable format
-
-          // Append message content and date/time to card body
-          cardBody.appendChild(messageContent);
-          cardBody.appendChild(messageDateTime);
-          
-          // Append card body to card
-          messageElement.appendChild(cardBody);
-          
-          // Append card to messages div
-          document.getElementById('messages').appendChild(messageElement);
+      // Fetch messages from Firebase and sort them by date and time
+      messagesRef.orderByChild('alarmDateTime').on('value', function(snapshot) {
+        const messages = snapshot.val();
+        const sortedMessages = Object.keys(messages).map(key => ({ key, ...messages[key] })).sort((a, b) => new Date(a.alarmDateTime) - new Date(b.alarmDateTime));
+        document.getElementById('messages').innerHTML = ''; // Clear previous messages
+        sortedMessages.forEach(message => {
+          displayMessage(message);
         });
       });
+    }
+
+    function displayMessage(message) {
+      const messageContent = message.message;
+      const dateTime = message.alarmDateTime;
+      
+      // Create HTML element for each message
+      const messageElement = document.createElement('div');
+      messageElement.id = message.key; // Set id to the message key
+      messageElement.classList.add('card', 'message-container');
+      
+      // Create elements for message content and date/time
+      const cardBody = document.createElement('div');
+      cardBody.classList.add('card-body');
+      const messageContentElement = document.createElement('p');
+      messageContentElement.classList.add('card-text');
+      messageContentElement.innerText = messageContent;
+      const messageDateTimeElement = document.createElement('p');
+      messageDateTimeElement.classList.add('card-text', 'text-muted', 'small');
+      messageDateTimeElement.innerText = 'Date and Time: ' + new Date(dateTime).toLocaleString(); // Convert timestamp to readable format
+
+      // Append message content and date/time to card body
+      cardBody.appendChild(messageContentElement);
+      cardBody.appendChild(messageDateTimeElement);
+      
+      // Append card body to card
+      messageElement.appendChild(cardBody);
+      
+      // Append card to messages div
+      document.getElementById('messages').appendChild(messageElement);
     }
 
     // Load messages when the page loads
