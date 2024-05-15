@@ -1,0 +1,29 @@
+[debug] [2024-05-15T01:26:49.730Z] ----------------------------------------------------------------------
+[debug] [2024-05-15T01:26:49.732Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\strassjm\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve --project forget-me-not-74a74
+[debug] [2024-05-15T01:26:49.733Z] CLI Version:   13.7.3
+[debug] [2024-05-15T01:26:49.733Z] Platform:      win32
+[debug] [2024-05-15T01:26:49.733Z] Node Version:  v20.12.0
+[debug] [2024-05-15T01:26:49.733Z] Time:          Tue May 14 2024 21:26:49 GMT-0400 (Eastern Daylight Time)
+[debug] [2024-05-15T01:26:49.733Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-05-15T01:26:49.856Z] Object ".hosting" in "firebase.json" has unknown property: {"additionalProperty":"database"}
+[debug] [2024-05-15T01:26:49.857Z] Field ".hosting" in "firebase.json" is possibly invalid: should be array
+[debug] [2024-05-15T01:26:49.857Z] Field ".hosting" in "firebase.json" is possibly invalid: should match some schema in anyOf
+[debug] [2024-05-15T01:26:49.862Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-05-15T01:26:49.862Z] > authorizing via signed-in user (strassjm@gmail.com)
+[debug] [2024-05-15T01:26:49.862Z] [iam] checking project forget-me-not-74a74 for permissions ["firebase.projects.get"]
+[debug] [2024-05-15T01:26:49.864Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/forget-me-not-74a74:testIamPermissions [none]
+[debug] [2024-05-15T01:26:49.864Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/forget-me-not-74a74:testIamPermissions x-goog-quota-user=projects/forget-me-not-74a74
+[debug] [2024-05-15T01:26:49.864Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/forget-me-not-74a74:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2024-05-15T01:26:50.039Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/forget-me-not-74a74:testIamPermissions 200
+[debug] [2024-05-15T01:26:50.040Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/forget-me-not-74a74:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2024-05-15T01:26:50.041Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/forget-me-not-74a74 [none]
+[debug] [2024-05-15T01:26:50.181Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/forget-me-not-74a74 200
+[debug] [2024-05-15T01:26:50.181Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/forget-me-not-74a74 {"projectId":"forget-me-not-74a74","projectNumber":"214952191183","displayName":"forget-me-not","name":"projects/forget-me-not-74a74","resources":{"hostingSite":"forget-me-not-74a74","realtimeDatabaseInstance":"forget-me-not-74a74-default-rtdb","storageBucket":"forget-me-not-74a74.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_58eb2154-4c18-45cf-bd40-20b4916d5def"}
+[info] 
+[info] === Serving from 'C:\Users\strassjm\PycharmProjects\StationaryDevice\Stationary Device'...
+[info] 
+[debug] [2024-05-15T01:26:50.186Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/forget-me-not-74a74/sites 
+[debug] [2024-05-15T01:26:50.501Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/forget-me-not-74a74/sites 200
+[debug] [2024-05-15T01:26:50.502Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/forget-me-not-74a74/sites {"sites":[{"name":"projects/forget-me-not-74a74/sites/forget-me-not-74a74","defaultUrl":"https://forget-me-not-74a74.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2024-05-15T01:26:50.502Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/forget-me-not-74a74/webApps/-/config [none]
